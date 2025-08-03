@@ -1,1 +1,56 @@
 --skiploading
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
+local StarterGui = game:GetService("StarterGui")
+
+-- Player Setup
+local lplr = Players.LocalPlayer
+local character = lplr.Character or lplr.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
+local humanoid = character:WaitForChild("Humanoid")
+
+-- Data Setup
+local data = ReplicatedStorage:WaitForChild("Datas"):WaitForChild(lplr.UserId)
+local Events = ReplicatedStorage:WaitForChild("Package"):WaitForChild("Events")
+
+-- Wait for game to load
+repeat
+    task.wait(0.2)
+until lplr.PlayerGui:FindFirstChild("Start") and Workspace.Others:FindFirstChild("Title")
+
+-- Initialize game
+Events.Start:InvokeServer()
+Workspace.Others.Title:Destroy()
+function startgame()
+    pcall(function()
+
+        repeat
+
+            if game.workspace[targetted] then
+                task.wait()
+                local Event = game:GetService("ReplicatedStorage").Package.Events.Start
+                Event:InvokeServer()
+                task.wait()
+
+                local Event = game:GetService("ReplicatedStorage").Package.Events.Start
+                Event:InvokeServer()
+
+                task.wait()
+
+                game.Players.LocalPlayer.PlayerGui.Main.bruh.Disabled = true
+
+                game.Players.LocalPlayer.PlayerGui.Main.bruh.Disabled = false
+
+                task.wait()
+                local Event = game:GetService("ReplicatedStorage").Package.Events.Start
+                Event:InvokeServer()
+
+            end
+        until game.workspace.Living[lplr.Name]
+
+    end)
+
+end
+
+startgame()
